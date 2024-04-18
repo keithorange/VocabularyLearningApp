@@ -23,7 +23,7 @@ const NotificationBanner = ({ message, isVisible }) => {
             duration: 500,
             useNativeDriver: true,
           }).start();
-        }, 1000);
+        }, 3000);
       });
     }
   }, [isVisible]);
@@ -143,7 +143,7 @@ export default function Quiz() {
 
   const handleAnswer = async (option) => {
       const result = option === correctAnswer ? 'win' : 'loss';
-      const message = result === 'win' ? "Correct! 🎉" : "Wrong! ❌";
+      const message = result === 'win' ? "Correct! 🎉" : "❌ '" + correctAnswer + "' was correct.";
       setBannerMessage(message);
       setShowBanner(true);
       if (result === 'win') {
@@ -225,11 +225,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
-    backgroundColor: 'rgba(255,255,255,0.4)',
+    backgroundColor: 'rgba(255,255,255,0.8)',
     borderRadius: 5,
   },
   notificationText: {
-    color: 'white',
+    color: 'black',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   
 });
