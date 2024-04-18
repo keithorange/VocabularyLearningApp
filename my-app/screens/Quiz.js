@@ -187,7 +187,7 @@ const handleAnswer = async (option) => {
       </View>
       {card ? (
         <>
-          <Text style={sharedStyles.titleText}>{quizType === 'key' ? `What is the translation for "${card.key}"?` : `What is the original word for "${card.value}"?`}</Text>
+          <Text style={sharedStyles.titleText}>{quizType === 'key' ? `"${card.key}"?` : `"${card.value}"?`}</Text>
           <View style={sharedStyles.buttonGrid}>
             {options.map((option, index) => (
               <TouchableOpacity
