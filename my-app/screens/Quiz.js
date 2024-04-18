@@ -3,37 +3,37 @@ import { View, Text, Button, TouchableOpacity, Animated } from 'react-native';
 import { sharedStyles } from '../styles';
 import { Audio } from 'expo-av';
 
+const NotificationBanner = ({ message }) => {
+    const opacity = new Animated.Value(0); // Reset opacity each time this component renders
 
-// Custom Notification Banner Component
-const NotificationBanner = ({ message, isVisible }) => {
-  const opacity = useState(new Animated.Value(0))[0];
+    useEffect(() => {
+        // Ensure that the animation runs every time the component receives a new message
+        if (message) {
+            Animated.sequence([
+                Animated.timing(opacity, {
+                    toValue: 1,
+                    duration: 500,
+                    useNativeDriver: true,
+                }),
+                Animated.delay(3000), // keep visible for 3 seconds
+                Animated.timing(opacity, {
+                    toValue: 0,
+                    duration: 500,
+                    useNativeDriver: true,
+                }),
+            ]).start();
+        }
+    }, [message, opacity]); // Depend on message and opacity to trigger animation
 
-  useEffect(() => {
-    if (isVisible) {
-      // Fade in
-      Animated.timing(opacity, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true,
-      }).start(() => {
-        // Stay visible for 1 second, then fade out
-        setTimeout(() => {
-          Animated.timing(opacity, {
-            toValue: 0,
-            duration: 500,
-            useNativeDriver: true,
-          }).start();
-        }, 3000);
-      });
-    }
-  }, [isVisible]);
+    if (!message) return null; // Do not render if no message is available
 
-  return (
-    <Animated.View style={[styles.notificationContainer, { opacity }]}>
-      <Text style={styles.notificationText}>{message}</Text>
-    </Animated.View>
-  );
+    return (
+        <Animated.View style={[styles.notificationContainer, { opacity }]}>
+            <Text style={styles.notificationText}>{message}</Text>
+        </Animated.View>
+    );
 };
+
 
 const getRandomColor = () => {
   const colors = ['red', 'blue', 'green', 'yellow', 'orange', 'pink'];
@@ -51,6 +51,8 @@ export default function Quiz() {
 
   const [showBanner, setShowBanner] = useState(false);
   const [bannerMessage, setBannerMessage] = useState('');
+  const [notificationCount, setNotificationCount] = useState(0);
+
   
   useEffect(() => {
     setBackgroundColor(getRandomColor());
@@ -141,22 +143,25 @@ export default function Quiz() {
 
 
 
-  const handleAnswer = async (option) => {
-      const result = option === correctAnswer ? 'win' : 'loss';
-      const message = result === 'win' ? "Correct! 🎉" : "❌ '" + correctAnswer + "' was correct.";
-      setBannerMessage(message);
-      setShowBanner(true);
-      if (result === 'win') {
+const handleAnswer = async (option) => {
+    const result = option === correctAnswer ? 'win' : 'loss';
+    const message = result === 'win' ? "Correct! 🎉" : "❌ '" + correctAnswer;
+    console.log("Message to display:", message); // Debug log
+    setBannerMessage(message);
+    setNotificationCount(prevCount => {
+        console.log("Current notification count:", prevCount); // Debug log
+        return prevCount + 1;
+    });
+    if (result === 'win') {
         setWins(wins + 1);
         await playSuccessSound();
-      } else {
+    } else {
         setLosses(losses + 1);
         await playFailureSound();
-      }
-      updateCardResult(card.id, result);
-      fetchRecommendedCard();  // Get the next card after answering
-    };
-
+    }
+    updateCardResult(card.id, result);
+    fetchRecommendedCard(); // Get the next card after answering
+};
 
   const updateCardResult = (cardId, result) => {
     fetch(`http://127.0.0.1:5000/card/update/${cardId}`, {
@@ -175,7 +180,8 @@ export default function Quiz() {
 
   return (
     <View style={[sharedStyles.container, { backgroundColor }]}>
-        <NotificationBanner message={bannerMessage} isVisible={showBanner} />
+        <NotificationBanner key={notificationCount} message={bannerMessage} />
+
       <View style={styles.statsContainer}>
         <Text style={styles.statsText}>Wins: {wins}, Losses: {losses}, Win Rate: {wins + losses > 0 ? ((wins / (wins + losses)) * 100).toFixed(2) + '%' : '0%'}</Text>
       </View>
