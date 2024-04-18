@@ -1,13 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, Button, TouchableOpacity, Animated } from 'react-native';
 import { sharedStyles } from '../styles';
 import { Audio } from 'expo-av';
 
+
+// Custom Notification Banner Component
+const NotificationBanner = ({ message, isVisible }) => {
+  const opacity = useState(new Animated.Value(0))[0];
+
+  useEffect(() => {
+    if (isVisible) {
+      // Fade in
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: 500,
+        useNativeDriver: true,
+      }).start(() => {
+        // Stay visible for 1 second, then fade out
+        setTimeout(() => {
+          Animated.timing(opacity, {
+            toValue: 0,
+            duration: 500,
+            useNativeDriver: true,
+          }).start();
+        }, 1000);
+      });
+    }
+  }, [isVisible]);
+
+  return (
+    <Animated.View style={[styles.notificationContainer, { opacity }]}>
+      <Text style={styles.notificationText}>{message}</Text>
+    </Animated.View>
+  );
+};
+
 const getRandomColor = () => {
-  const colors = ['red', 'blue', 'green', 'yellow', 'orange', 'purple'];
+  const colors = ['red', 'blue', 'green', 'yellow', 'orange', 'pink'];
   return colors[Math.floor(Math.random() * colors.length)];
 };
-export default function QuizScreen() {
+export default function Quiz() {
   const [card, setCard] = useState(null);  // Current card to quiz
   const [options, setOptions] = useState([]);  // Quiz options displayed to the user
   const [correctAnswer, setCorrectAnswer] = useState('');  // Store the correct answer for validation
@@ -17,6 +49,8 @@ export default function QuizScreen() {
   const [backgroundColor, setBackgroundColor] = useState(getRandomColor());
   const [sound, setSound] = useState();
 
+  const [showBanner, setShowBanner] = useState(false);
+  const [bannerMessage, setBannerMessage] = useState('');
   
   useEffect(() => {
     setBackgroundColor(getRandomColor());
@@ -64,52 +98,64 @@ export default function QuizScreen() {
       .catch(error => console.error('Error fetching recommended card:', error));
   };
   const prepareQuizOptions = (selectedCard, allCards) => {
-    const coinFlip = Math.random() > 0.5;  // Randomly decide the quiz type
-    setQuizType(coinFlip ? 'value' : 'key');  // Determine if we are asking for the key or value
-    setCorrectAnswer(coinFlip ? selectedCard.value : selectedCard.key);
-
-    // Get an array of possible answers, excluding the correct answer's card
-    const potentialAnswers = allCards.filter(item => item.id !== selectedCard.id)
-      .map(item => coinFlip ? item.value : item.key);
+  const coinFlip = Math.random() > 0.5;  // Randomly decide the quiz type
+  
+  // Determine the attribute to display based on quizType, but fetch the opposite attribute for options
+  const attributeToShow = coinFlip ? 'value' : 'key';
+  const attributeForOptions = coinFlip ? 'key' : 'value';
+  
+  
       
-    // Remove duplicates and ensure enough unique options
-    const uniqueOptions = [...new Set(potentialAnswers)];
-    if (uniqueOptions.length < 4) {
-      console.error("Not enough unique options available.");
-      return; // Handle this error appropriately in production
-    }
-    // Select three random options from unique options
-    let randomOptions = [];
-    while (randomOptions.length < 3) {
-      const randomIndex = Math.floor(Math.random() * uniqueOptions.length);
-      randomOptions.push(uniqueOptions[randomIndex]);
-      uniqueOptions.splice(randomIndex, 1);
-    }
+  setQuizType(attributeToShow); 
+  setCorrectAnswer(selectedCard[attributeForOptions]);
+  
+  // Get an array of possible answers, excluding the correct answer's card
+  const potentialAnswers = allCards.filter(item => item[attributeToShow] !== selectedCard[attributeToShow])
+    
+  // Remove duplicates and ensure enough unique options
+  const uniqueOptions = [...new Set(potentialAnswers)];
+  if (uniqueOptions.length < 3) {
+    console.error("Not enough unique options available.");
+    return; // Handle this error appropriately in production
+  }
+    
 
-    // // Add the correct answer and shuffle
-    randomOptions.push(coinFlip ? selectedCard.value : selectedCard.key);
-    randomOptions.sort(() => Math.random() - 0.5);
+  // Select three random options from unique options
+  let randomOptions = [];
+  while (randomOptions.length < 3) {
+    const randomIndex = Math.floor(Math.random() * uniqueOptions.length);
+    randomOptions.push(uniqueOptions[randomIndex][attributeForOptions]);
+    uniqueOptions.splice(randomIndex, 1);
+  }
+
+    // print the key values of all options    
+  // Add the correct answer and shuffle
+  randomOptions.push(selectedCard[attributeForOptions]);
+  randomOptions.sort(() => Math.random() - 0.5);
 
 
-    console.log('randomOptions:', randomOptions)
-    setOptions(randomOptions);
+  setOptions(randomOptions);
+
+  //console.log("selectedCard:", selectedCard, "randomOptions:", randomOptions, "correctAnswer:", correctAnswer);
 };
+
 
 
   const handleAnswer = async (option) => {
-  const result = option === correctAnswer ? 'win' : 'loss';
-  if (result === 'win') {
-    setWins(wins + 1);
-    await playSuccessSound();
-    Alert.alert("Correct!", "🎉", [{ text: "OK", onPress: () => console.log("OK Pressed") }]);
-  } else {
-    setLosses(losses + 1);
-    await playFailureSound();
-    Alert.alert("Wrong!", "❌", [{ text: "OK", onPress: () => console.log("OK Pressed") }]);
-  }
-  updateCardResult(card.id, result);
-  fetchRecommendedCard();  // Get the next card after answering
-};
+      const result = option === correctAnswer ? 'win' : 'loss';
+      const message = result === 'win' ? "Correct! 🎉" : "Wrong! ❌";
+      setBannerMessage(message);
+      setShowBanner(true);
+      if (result === 'win') {
+        setWins(wins + 1);
+        await playSuccessSound();
+      } else {
+        setLosses(losses + 1);
+        await playFailureSound();
+      }
+      updateCardResult(card.id, result);
+      fetchRecommendedCard();  // Get the next card after answering
+    };
 
 
   const updateCardResult = (cardId, result) => {
@@ -122,13 +168,14 @@ export default function QuizScreen() {
     })
     .then(response => response.json())
     .then(data => {
-      Alert.alert('Result Updated', `Your answer was a ${result}.`);
+      console.log('updateCardResult success', `Your answer was a ${result}.`);
     })
     .catch(error => console.error('Error updating card result:', error));
   };
 
   return (
     <View style={[sharedStyles.container, { backgroundColor }]}>
+        <NotificationBanner message={bannerMessage} isVisible={showBanner} />
       <View style={styles.statsContainer}>
         <Text style={styles.statsText}>Wins: {wins}, Losses: {losses}, Win Rate: {wins + losses > 0 ? ((wins / (wins + losses)) * 100).toFixed(2) + '%' : '0%'}</Text>
       </View>
@@ -166,7 +213,23 @@ const styles = StyleSheet.create({
     right: 10,
   },
   statsText: {
-    fontSize: 12,
-    color: '#666',
+    fontSize: 16,
+    fontWeight: 400,
+    color: 'white',
   },
+  notificationContainer: {
+    position: 'absolute',
+    top: 50,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+    backgroundColor: 'rgba(255,255,255,0.4)',
+    borderRadius: 5,
+  },
+  notificationText: {
+    color: 'white',
+  },
+  
 });

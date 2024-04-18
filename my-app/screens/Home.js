@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Table, Row, Rows, TableWrapper, Cell } from 'react-native-reanimated-table';
 
 
-export default function MainScreen({ navigation }) {
+export default function Home({ navigation }) {
   const [key, setKey] = useState('');
   const [value, setValue] = useState('');
   const [cards, setCards] = useState([]);
@@ -104,16 +104,18 @@ export default function MainScreen({ navigation }) {
           <Icon name="send" size={24} color="white" />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.playButton} onPress={() => navigation.navigate('QuizScreen')}>
+      <TouchableOpacity style={styles.playButton} onPress={() => navigation.navigate('Quiz')}>
         <Icon name="play-arrow" size={28} color="white" />
         <Text style={styles.playButtonText}>Play Quiz</Text>
       </TouchableOpacity>
 
 
+    
         <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
         <Row data={tableHead} style={{ height: 40, backgroundColor: '#f1f8ff' }} textStyle={{ margin: 6 }} widthArr={widthArr} />
         {
-          cards.map((card, index) => (
+          cards.sort((a, b) => (a.wins / (a.wins + a.losses)) - (b.wins / (b.wins + b.losses))).reverse()
+            .map((card, index) => (
             <TableWrapper key={index} style={{ flexDirection: 'row', backgroundColor: '#fff' }}>
               <Cell data={card.key} textStyle={{ margin: 6 }} />
               <Cell data={card.value} textStyle={{ margin: 6 }} />
@@ -155,10 +157,9 @@ const styles = StyleSheet.create({
   },
 
 
-  container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
   head: { height: 40, backgroundColor: '#808B97' },
   text: { margin: 6 },
-  row: { flexDirection: 'row', backgroundColor: '#FFF1C1' },
+  row: { flexDirection: 'row', backgroundColor: '#FFF1C1' , flex: 1},
   btn: { width: 58, height: 18, backgroundColor: '#78B7BB',  borderRadius: 2 },
   btnText: { textAlign: 'center', color: '#fff' },
 
@@ -185,6 +186,7 @@ const styles = StyleSheet.create({
   },
   playButton: {
     marginTop: 20,
+    marginBottom: 20,
     backgroundColor: '#4CAF50',
     flexDirection: 'row',
     alignItems: 'center',

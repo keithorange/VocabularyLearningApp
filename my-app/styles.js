@@ -8,6 +8,8 @@ export const sharedStyles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     width: '100%', // Make sure the container takes full width
+    color: 'orange', // Set the background color to orange
+    backgroundColor: 'orange', // Set the background color to orange
   },
   buttonGrid: {
     flexDirection: 'row',
@@ -29,10 +31,11 @@ export const sharedStyles = StyleSheet.create({
   },
 
   titleText: {
-    fontSize: 30, // Increased font size for better visibility
+    fontSize: 42, // Increased font size for better visibility
+    fontWeight: '500', // Bold text for better visibility
     color: 'white',
     marginBottom: 20,
-    textShadowColor: 'rgba(0, 0, 0, 0.75)', // Text shadow for better contrast
+    textShadowColor: 'rgba(0, 0, 0, 0.2)', // Text shadow for better contrast
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 10
   },
@@ -41,7 +44,8 @@ export const sharedStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center', // Ensure the background image is centered
     width: '100%', // Ensure the background covers the full width
-    height: '100%' // Ensure the background covers the full height
+    height: '100%', // Ensure the background covers the full height,
+    color: 'orange', // Set the background color to orange
     },
   input: {
     height: 40,
