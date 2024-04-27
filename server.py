@@ -86,7 +86,12 @@ def recommend_card(skew_factor=1):
                 
         def calculate_win_rates(df):
             """Calculate win rates for cards."""
-            df['winrate'] = df['wins'] / df['total_seen']
+            # if total_seen is 0, set winrate to 0
+            if df['total_seen'] == 0:
+                df['winrate'] = 0
+            else:
+                df['winrate'] = df['wins'] / df['total_seen']
+            
             return df
 
 
