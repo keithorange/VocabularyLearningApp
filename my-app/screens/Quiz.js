@@ -356,10 +356,10 @@ export default function Quiz() {
         
       
 
-      <View style={styles.statsContainer}>
+      <View style={{ flexDirection: 'row', position: 'absolute', top: 0, right: 0, width: width*0.1}}>
         {(winningStreak > 0) && (<Text style={styles.streakText}>{winningStreak}X</Text>)}
         <PieChart
-          radius={width*0.1}
+          radius={60}
           data={[
             { value: wins, color: 'green' },
             { value: losses, color: 'red'}
