@@ -21,21 +21,29 @@ export const sharedStyles = StyleSheet.create({
   button: {
     backgroundColor: '#841584',
     width: '50%', // Each button takes half the width of the container
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 25,
     margin: 5,
+    alignItems: 'center',
+    borderRadius: 15,
+
+    textShadowColor: 'rgba(0, 0, 0, 0.2)', // Text shadow for better contrast
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10
+
   },
   buttonText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 24,
     textTransform: 'none', // Ensure text is not automatically transformed
   },
 
   titleText: {
-    fontSize: 42, // Increased font size for better visibility
+    fontSize: 64, // Increased font size for better visibility
     fontWeight: '500', // Bold text for better visibility
     color: 'white',
     marginBottom: 20,
-    textShadowColor: 'rgba(0, 0, 0, 0.2)', // Text shadow for better contrast
+    textShadowColor: 'rgba(0, 0, 0, 0.4)', // Text shadow for better contrast
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 10
   },

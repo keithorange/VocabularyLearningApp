@@ -12,23 +12,28 @@ def generate_csv_from_json(json_file, csv_file):
     rows = []
     current_time = datetime.datetime.now()
     
-    for key, value in data.items():
+    for obj in list(data):
         row = {
             "id": str(uuid.uuid4()),
-            "key": key,
-            "value": value,
             "total_seen": 0,
             "wins": 0,
             "losses": 0,
             "winrate": 0,
             "entry_time": current_time.strftime('%Y-%m-%d %H:%M:%S.%f'),
-            "last_seen_time": current_time.strftime('%Y-%m-%d %H:%M:%S.%f')
+            "last_seen_time": current_time.strftime('%Y-%m-%d %H:%M:%S.%f'),
+            # include all data.items here
+            "word": obj["word"],
+            "translation": obj["translation"],
+            "ipa": obj["ipa"],
+            "illustration": obj["illustration"],
         }
         rows.append(row)
     
     # Write to CSV file
     with open(csv_file, 'w', newline='') as file:
-        fieldnames = ['id', 'key', 'value', 'total_seen', 'wins', 'losses', 'winrate', 'entry_time', 'last_seen_time']
+        fieldnames = ['id', 'total_seen', 'wins', 'losses', 'winrate', 'entry_time', 'last_seen_time',
+                      "word","translation","ipa","illustration"
+                      ]
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
         for row in rows:
