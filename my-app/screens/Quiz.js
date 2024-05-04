@@ -155,7 +155,7 @@ export default function Quiz() {
       require('../sounds/error.mp3')
     );
     setSound(newSound); // Assign the new sound object to the state
-
+    await newSound.playAsync(); // Use the new sound object
 
     const scaledVolume = getVolumeFromStreak(losingStreak);
     await newSound.setVolumeAsync(scaledVolume); // Use the new sound object
@@ -286,9 +286,9 @@ export default function Quiz() {
         
         <Text style={{fontSize: 64, fontWeight: 600,color: 'white'}}>{isCorrect ? "Correct! 🎉" : "Wrong! ❌ "}</Text>
 
-        <Text style={{ fontSize: 32, fontWeight:400, color: 'white' }}>{correctAnswer['word']}</Text>
-        
         <Text style={{ fontSize: 32, fontWeight: 400, color: 'white' }}>{correctAnswer['translation']}</Text>
+        
+        <Text style={{ fontSize: 32, fontWeight:400, color: 'white' }}>{correctAnswer['word']}</Text>
         
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Text style={{fontSize: 32, fontWeight: 300,color: 'white'}}>{correctAnswer['ipa']}</Text>
@@ -357,6 +357,7 @@ export default function Quiz() {
       
 
       <View style={styles.statsContainer}>
+        {(winningStreak > 0) && (<Text style={styles.streakText}>{winningStreak}X</Text>)}
         <PieChart
           radius={width*0.1}
           data={[
@@ -364,7 +365,6 @@ export default function Quiz() {
             { value: losses, color: 'red'}
           ]}
           />
-          {(winningStreak > 0) && (<Text style={styles.streakText}>{winningStreak}X</Text>)}
       </View>
       {card ? (
         <>
@@ -409,9 +409,10 @@ export default function Quiz() {
 
 const styles = StyleSheet.create({
   statsContainer: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
+    // position: 'absolute',
+    // top: 10,
+    // right: 10,
+    flexDirection: 'row',
   },
   statsText: {
     fontSize: 16,
