@@ -166,7 +166,10 @@ export default function Quiz() {
 
   const questionText = (quizType === 'word') ? correctAnswer.word : correctAnswer.translation
 
-  const ttsQuestionText = () => Speech.speak(questionText)
+
+  const ttsQuestionText = () => Speech.speak(questionText, {
+    rate: 0.85,
+  })
   const ttsBoth = () => Speech.speak(correctAnswer.word + ". " + correctAnswer.translation)
 
   // auto play Translation tts on new card
@@ -356,10 +359,12 @@ export default function Quiz() {
         
       
 
-      <View style={{ flexDirection: 'row', position: 'absolute', top: 0, right: 0, width: width*0.1}}>
+      <View style={{ position: 'absolute', top: 10, left: 10, width: width*0.1}}>
         {(winningStreak > 0) && (<Text style={styles.streakText}>{winningStreak}X</Text>)}
+      </View>
+      <View style={{ position: 'absolute', top: 10, right: 10, width: width*0.1}}>
         <PieChart
-          radius={60}
+          radius={100}
           data={[
             { value: wins, color: 'green' },
             { value: losses, color: 'red'}
