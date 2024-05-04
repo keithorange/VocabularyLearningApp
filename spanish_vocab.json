@@ -1,5 +1,393 @@
 [
   {
+    "translation": "Hola",
+    "word": "Hello",
+    "ipa": "hoʊˈlɑː",
+    "illustration": "👋"
+  },
+  {
+    "translation": "Adiós",
+    "word": "Goodbye",
+    "ipa": "ɑːdiˈos",
+    "illustration": "👋"
+  },
+  {
+    "translation": "Por favor",
+    "word": "Please",
+    "ipa": "pɔr fɑˈvɔr",
+    "illustration": "🙏"
+  },
+  {
+    "translation": "Gracias",
+    "word": "Thank you",
+    "ipa": "ɡrɑːsiˈɑːs",
+    "illustration": "🙏"
+  },
+  {
+    "translation": "Lo siento",
+    "word": "Sorry",
+    "ipa": "lo siˈɛnto",
+    "illustration": "😞"
+  },
+  {
+    "translation": "Sí",
+    "word": "Yes",
+    "ipa": "siː",
+    "illustration": "✔️"
+  },
+  {
+    "translation": "No",
+    "word": "No",
+    "ipa": "noʊ",
+    "illustration": "❌"
+  },
+  {
+    "translation": "¿Cómo estás?",
+    "word": "How are you?",
+    "ipa": "komo estɑːs",
+    "illustration": "🤔"
+  }
+,
+  {
+    "translation": "Bien",
+    "word": "Good",
+    "ipa": "bjen",
+    "illustration": "👍"
+  },
+  {
+    "translation": "Mal",
+    "word": "Bad",
+    "ipa": "mal",
+    "illustration": "👎"
+  },
+  {
+    "translation": "Más o menos",
+    "word": "So-so",
+    "ipa": "mas o ˈmenos",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "¿Qué tal?",
+    "word": "What's up?",
+    "ipa": "ke tal",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "Buenas noches",
+    "word": "Good night",
+    "ipa": "bwɛnas ˈnotʃes",
+    "illustration": "🌃"
+  },
+  {
+    "translation": "Buenos días",
+    "word": "Good morning",
+    "ipa": "bwɛnos ˈdi.as",
+    "illustration": "☀️"
+  },
+  {
+    "translation": "Buenas tardes",
+    "word": "Good afternoon",
+    "ipa": "bwɛnas ˈtarðes",
+    "illustration": "☀️"
+  },
+  {
+    "translation": "Encantado/a",
+    "word": "Nice to meet you",
+    "ipa": "eŋkantado/a",
+    "illustration": "🤝"
+  },
+  {
+    "translation": "¿Cuánto cuesta?",
+    "word": "How much does it cost?",
+    "ipa": "kwanto ˈkwesta",
+    "illustration": "💸"
+  },
+  {
+    "translation": "No entiendo",
+    "word": "I don't understand",
+    "ipa": "no entjendo",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "¿Puede ayudarme?",
+    "word": "Can you help me?",
+    "ipa": "pweðe ajuˈðarme",
+    "illustration": "🤝"
+  },
+  {
+    "translation": "Claro",
+    "word": "Of course",
+    "ipa": "klaro",
+    "illustration": "✔️"
+  },
+  {
+    "translation": "Perdón",
+    "word": "Excuse me",
+    "ipa": "perˈdon",
+    "illustration": "🙏"
+  },
+  {
+    "translation": "Salud",
+    "word": "Bless you",
+    "ipa": "saluð",
+    "illustration": "🤧"
+  },
+  {
+    "translation": "De nada",
+    "word": "You're welcome",
+    "ipa": "de ˈnada",
+    "illustration": "🙏"
+  },
+  {
+    "translation": "¿Dónde está el baño?",
+    "word": "Where is the bathroom?",
+    "ipa": "dondɛ sta el ˈbaɲo",
+    "illustration": "🚽"
+  },
+  {
+    "translation": "Estoy perdido/a",
+    "word": "I am lost",
+    "ipa": "estoj perˈdiðo/a",
+    "illustration": "🗺️"
+  },
+  {
+    "translation": "¿Habla inglés?",
+    "word": "Do you speak English?",
+    "ipa": "abla iŋˈgles",
+    "illustration": "🇬🇧"
+  },
+  {
+    "translation": "Tengo hambre",
+    "word": "I'm hungry",
+    "ipa": "tengo ˈambɾe",
+    "illustration": "🍔"
+  },
+  {
+    "translation": "Tengo sed",
+    "word": "I'm thirsty",
+    "ipa": "tengo ˈsed",
+    "illustration": "💧"
+  },
+  {
+    "translation": "Estoy cansado/a",
+    "word": "I'm tired",
+    "ipa": "estoj kansasˈðo/a",
+    "illustration": "😴"
+  }
+, 
+
+  {
+    "translation": "Bien",
+    "word": "Good",
+    "ipa": "bjen",
+    "illustration": "👍"
+  },
+  {
+    "translation": "Mal",
+    "word": "Bad",
+    "ipa": "mal",
+    "illustration": "👎"
+  },
+  {
+    "translation": "Más o menos",
+    "word": "So-so",
+    "ipa": "mas o ˈmenos",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "¿Qué tal?",
+    "word": "What's up?",
+    "ipa": "ke tal",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "Buenas noches",
+    "word": "Good night",
+    "ipa": "bwɛnas ˈnotʃes",
+    "illustration": "🌃"
+  },
+  {
+    "translation": "Buenos días",
+    "word": "Good morning",
+    "ipa": "bwɛnos ˈdi.as",
+    "illustration": "☀️"
+  },
+  {
+    "translation": "Buenas tardes",
+    "word": "Good afternoon",
+    "ipa": "bwɛnas ˈtarðes",
+    "illustration": "☀️"
+  },
+  {
+    "translation": "Encantado/a",
+    "word": "Nice to meet you",
+    "ipa": "eŋkantado/a",
+    "illustration": "🤝"
+  },
+  {
+    "translation": "¿Cuánto cuesta?",
+    "word": "How much does it cost?",
+    "ipa": "kwanto ˈkwesta",
+    "illustration": "💸"
+  },
+  {
+    "translation": "No entiendo",
+    "word": "I don't understand",
+    "ipa": "no entjendo",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "¿Puede ayudarme?",
+    "word": "Can you help me?",
+    "ipa": "pweðe ajuˈðarme",
+    "illustration": "🤝"
+  },
+  {
+    "translation": "Claro",
+    "word": "Of course",
+    "ipa": "klaro",
+    "illustration": "✔️"
+  },
+  {
+    "translation": "Perdón",
+    "word": "Excuse me",
+    "ipa": "perˈdon",
+    "illustration": "🙏"
+  },
+  {
+    "translation": "Salud",
+    "word": "Bless you",
+    "ipa": "saluð",
+    "illustration": "🤧"
+  },
+  {
+    "translation": "De nada",
+    "word": "You're welcome",
+    "ipa": "de ˈnada",
+    "illustration": "🙏"
+  },
+  {
+    "translation": "¿Dónde está el baño?",
+    "word": "Where is the bathroom?",
+    "ipa": "dondɛ sta el ˈbaɲo",
+    "illustration": "🚽"
+  },
+  {
+    "translation": "Estoy perdido/a",
+    "word": "I am lost",
+    "ipa": "estoj perˈdiðo/a",
+    "illustration": "🗺️"
+  },
+  {
+    "translation": "¿Habla inglés?",
+    "word": "Do you speak English?",
+    "ipa": "abla iŋˈgles",
+    "illustration": "🇬🇧"
+  },
+  {
+    "translation": "Tengo hambre",
+    "word": "I'm hungry",
+    "ipa": "tengo ˈambɾe",
+    "illustration": "🍔"
+  },
+  {
+    "translation": "Tengo sed",
+    "word": "I'm thirsty",
+    "ipa": "tengo ˈsed",
+    "illustration": "💧"
+  },
+  {
+    "translation": "Estoy cansado/a",
+    "word": "I'm tired",
+    "ipa": "estoj kansasˈðo/a",
+    "illustration": "😴"
+  },
+  {
+    "translation": "Feliz cumpleaños",
+    "word": "Happy birthday",
+    "ipa": "feˈliθ kumpleˈaɲos",
+    "illustration": "🎉"
+  },
+  {
+    "translation": "¿Cómo te llamas?",
+    "word": "What's your name?",
+    "ipa": "komo te ˈjamas",
+    "illustration": "👀"
+  },
+  {
+    "translation": "Me llamo...",
+    "word": "My name is...",
+    "ipa": "me ˈjamo",
+    "illustration": "👀"
+  },
+  {
+    "translation": "¿De dónde eres?",
+    "word": "Where are you from?",
+    "ipa": "de ˈdondɛ ˈeɾes",
+    "illustration": "🗺️"
+  },
+  {
+    "translation": "Soy de...",
+    "word": "I am from...",
+    "ipa": "soj de",
+    "illustration": "🗺️"
+  },
+  {
+    "translation": "¿Cuántos años tienes?",
+    "word": "How old are you?",
+    "ipa": "kwantos ˈaɲos ˈtjenes",
+    "illustration": "🎂"
+  },
+  {
+    "translation": "Tengo... años",
+    "word": "I am... years old",
+    "ipa": "tengo ˈaɲos",
+    "illustration": "🎂"
+  },
+  {
+    "translation": "Esta es mi esposa",
+    "word": "This is my wife",
+    "ipa": "esta es mi eˈsposa",
+    "illustration": "👫"
+  },
+  {
+    "translation": "Este es mi esposo",
+    "word": "This is my husband",
+    "ipa": "este es mi eˈsposo",
+    "illustration": "👫"
+  },
+  {
+    "translation": "¿Tienes hermanos?",
+    "word": "Do you have siblings?",
+    "ipa": "tjenes erˈmanos",
+    "illustration": "👧"
+  },
+  {
+    "translation": "Sí, tengo...",
+    "word": "Yes, I have...",
+    "ipa": "si tengo",
+    "illustration": "👧"
+  },
+  {
+    "translation": "No, no tengo",
+    "word": "No, I don't have",
+    "ipa": "no no tengo",
+    "illustration": "🙅‍♂️"
+  },
+  {
+    "translation": "Buen viaje",
+    "word": "Have a good trip",
+    "ipa": "bwɛn biˈaxe",
+    "illustration": "✈️"
+  },
+  {
+    "translation": "¡Qué bien!",
+    "word": "That's great!",
+    "ipa": "ke ˈbjen",
+    "illustration": "🎉"
+  }
+,
+  {
     "translation": "Estar a la altura de las circunstancias",
     "word": "To be up to the circumstances",
     "ipa": "ɛsˈtɑːr ɑː lɑː ɑːlˈtʊrɑː dɛ lɑːs sɪrkʊnˈstɑːnsɪɑːs",
@@ -58,5 +446,950 @@
     "word": "To be in the clouds",
     "ipa": "ɛsˈtɑːr ɛn lɑːs ˈnʊβɛs",
     "illustration": "🧍☁️☁️"
+  },
+
+  {
+    "translation": "Tener",
+    "word": "To have",
+    "ipa": "teneɾ",
+    "illustration": "🤝"
+  },
+  {
+    "translation": "Hacer",
+    "word": "To do/make",
+    "ipa": "aˈθeɾ",
+    "illustration": "🎨"
+  },
+  {
+    "translation": "Ir",
+    "word": "To go",
+    "ipa": "iɾ",
+    "illustration": "🚶‍♂️"
+  },
+  {
+    "translation": "Venir",
+    "word": "To come",
+    "ipa": "beˈniɾ",
+    "illustration": "🚶‍♂️"
+  },
+  {
+    "translation": "Ver",
+    "word": "To see",
+    "ipa": "beɾ",
+    "illustration": "👀"
+  },
+  {
+    "translation": "Dar",
+    "word": "To give",
+    "ipa": "daɾ",
+    "illustration": "🎁"
+  },
+  {
+    "translation": "Saber, Conocer",
+    "word": "To know",
+    "ipa": "saˈbeɾ, konoˈseɾ",
+    "illustration": "🤓"
+  },
+  {
+    "translation": "Querer",
+    "word": "To want",
+    "ipa": "keˈɾeɾ",
+    "illustration": "💕"
+  },
+  {
+    "translation": "Salir",
+    "word": "To leave",
+    "ipa": "saˈliɾ",
+    "illustration": "🚪"
+  },
+  {
+    "translation": "Poder",
+    "word": "To be able to",
+    "ipa": "poˈðeɾ",
+    "illustration": "💪"
+  },
+  {
+    "translation": "Decir",
+    "word": "To say",
+    "ipa": "deˈsiɾ",
+    "illustration": "💬"
+  },
+  {
+    "translation": "Oír",
+    "word": "To hear",
+    "ipa": "oˈiɾ",
+    "illustration": "👂"
+  },
+  {
+    "translation": "Leer",
+    "word": "To read",
+    "ipa": "leˈeɾ",
+    "illustration": "📖"
+  },
+  {
+    "translation": "Escribir",
+    "word": "To write",
+    "ipa": "es.kɾiˈβiɾ",
+    "illustration": "✍️"
+  },
+  {
+    "translation": "Comer",
+    "word": "To eat",
+    "ipa": "koˈmeɾ",
+    "illustration": "🍴"
+  },
+  {
+    "translation": "Beber",
+    "word": "To drink",
+    "ipa": "beˈβeɾ",
+    "illustration": "☕️"
+  },
+  {
+    "translation": "Dormir",
+    "word": "To sleep",
+    "ipa": "doɾˈmiɾ",
+    "illustration": "😴"
+  },
+  {
+    "translation": "Encontrar",
+    "word": "To find",
+    "ipa": "eŋ.konˈtɾaɾ",
+    "illustration": "🔍"
+  },
+  {
+    "translation": "Hablar",
+    "word": "To speak",
+    "ipa": "aˈβlaɾ",
+    "illustration": "💬"
+  },
+  {
+    "translation": "Comprar",
+    "word": "To buy",
+    "ipa": "komˈpɾaɾ",
+    "illustration": "🛍️"
+  },
+  {
+    "translation": "Trabajar",
+    "word": "To work",
+    "ipa": "tɾa.βaˈxaɾ",
+    "illustration": "💼"
+  },
+  {
+    "translation": "Jugar",
+    "word": "To play",
+    "ipa": "xuˈɣaɾ",
+    "illustration": "🎮"
+  },
+  {
+    "translation": "Caminar",
+    "word": "To walk",
+    "ipa": "kamiˈnaɾ",
+    "illustration": "🚶‍♂️"
+  },
+  {
+    "translation": "Correr",
+    "word": "To run",
+    "ipa": "koˈreɾ",
+    "illustration": "🏃‍♂️"
+  },
+  {
+    "translation": "Abrir",
+    "word": "To open",
+    "ipa": "aˈβiɾ",
+    "illustration": "🔓"
+  },
+  {
+    "translation": "Cerrar",
+    "word": "To close",
+    "ipa": "seˈraɾ",
+    "illustration": "🔒"
+  },
+  {
+    "translation": "Pensar",
+    "word": "To think",
+    "ipa": "penˈsaɾ",
+    "illustration": "💭"
+  },
+  {
+    "translation": "Conocer",
+    "word": "To meet",
+    "ipa": "konoˈseɾ",
+    "illustration": "🤝"
+  },
+  {
+    "translation": "Vivir",
+    "word": "To live",
+    "ipa": "biˈβiɾ",
+    "illustration": "❤️"
+  },
+  {
+    "translation": "Morir",
+    "word": "To die",
+    "ipa": "moˈɾiɾ",
+    "illustration": "💀"
+  },
+  {
+    "translation": "Preguntar",
+    "word": "To ask",
+    "ipa": "pɾeˈɣun.taɾ",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "Responder",
+    "word": "To answer",
+    "ipa": "responˈdeɾ",
+    "illustration": "💬"
+  },
+  {
+    "translation": "Sentir",
+    "word": "To feel",
+    "ipa": "senˈtiɾ",
+    "illustration": "💕"
+  },
+  {
+    "translation": "Escuchar",
+    "word": "To listen",
+    "ipa": "es.kuˈtʃaɾ",
+    "illustration": "👂"
+  },
+  {
+    "translation": "Perder",
+    "word": "To lose",
+    "ipa": "peɾˈdeɾ",
+    "illustration": "😔"
+  },
+  {
+    "translation": "Ganar",
+    "word": "To win",
+    "ipa": "ɡaˈnaɾ",
+    "illustration": "🏆"
+  },
+  {
+    "translation": "Enseñar",
+    "word": "To teach",
+    "ipa": "en.seˈɲaɾ",
+    "illustration": "📚"
+  },
+  {
+    "translation": "Aprender",
+    "word": "To learn",
+    "ipa": "apɾenˈdeɾ",
+    "illustration": "📚"
+  },
+  {
+    "translation": "Madre",
+    "word": "Mother",
+    "ipa": "maˈðɾe",
+    "illustration": "👩"
+  },
+  {
+    "translation": "Padre",
+    "word": "Father",
+    "ipa": "paˈðɾe",
+    "illustration": "👨"
+  },
+  {
+    "translation": "Hermano",
+    "word": "Brother",
+    "ipa": "eɾˈmano",
+    "illustration": "👦"
+  },
+  {
+    "translation": "Hermana",
+    "word": "Sister",
+    "ipa": "eɾˈmana",
+    "illustration": "👧"
+  },
+  {
+    "translation": "Hijo",
+    "word": "Son",
+    "ipa": "iˈxo",
+    "illustration": "👦"
+  },
+  {
+    "translation": "Hija",
+    "word": "Daughter",
+    "ipa": "iˈxa",
+    "illustration": "👧"
+  },
+  {
+    "translation": "Abuelo",
+    "word": "Grandfather",
+    "ipa": "aˈbwe.lo",
+    "illustration": "👴"
+  },
+  {
+    "translation": "Abuela",
+    "word": "Grandmother",
+    "ipa": "aˈbwe.la",
+    "illustration": "👵"
+  },
+  {
+    "translation": "Nieto",
+    "word": "Grandson",
+    "ipa": "njeˈto",
+    "illustration": "👦"
+  },
+  {
+    "translation": "Nieta",
+    "word": "Granddaughter",
+    "ipa": "njeˈta",
+    "illustration": "👧"
+  },
+  {
+    "translation": "Tío",
+    "word": "Uncle",
+    "ipa": "tiˈo",
+    "illustration": "👴"
+  },
+  {
+    "translation": "Tía",
+    "word": "Aunt",
+    "ipa": "tiˈa",
+    "illustration": "👵"
+  },
+  {
+    "translation": "Primo",
+    "word": "Cousin male",
+    "ipa": "pɾiˈmo",
+    "illustration": "👦"
+  },
+  {
+    "translation": "Prima",
+    "word": "Cousin female",
+    "ipa": "pɾiˈma",
+    "illustration": "👧"
+  },
+  {
+    "translation": "Esposo",
+    "word": "Husband",
+    "ipa": "es.poˈso",
+    "illustration": "👨"
+  },
+  {
+    "translation": "Esposa",
+    "word": "Wife",
+    "ipa": "es.poˈsa",
+    "illustration": "👩"
+  },
+  {
+    "translation": "Novio",
+    "word": "Boyfriend",
+    "ipa": "noˈβjo",
+    "illustration": "👨"
+  },
+  {
+    "translation": "Novia",
+    "word": "Girlfriend",
+    "ipa": "noˈβja",
+    "illustration": "👩"
+  },
+  {
+    "translation": "Amigo",
+    "word": "Friend male",
+    "ipa": "aˈmiɣo",
+    "illustration": "👨"
+  },
+  {
+    "translation": "Amiga",
+    "word": "Friend female",
+    "ipa": "aˈmiɣa",
+    "illustration": "👩"
+  },
+  {
+    "translation": "Grande",
+    "word": "Big",
+    "ipa": "ɡɾanˈde",
+    "illustration": "🤩"
+  },
+  {
+    "translation": "Pequeño/a",
+    "word": "Small",
+    "ipa": "pekeˈɲo/a",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "Alto/a",
+    "word": "Tall",
+    "ipa": "alˈto/a",
+    "illustration": "🤩"
+  },
+  {
+    "translation": "Bajo/a",
+    "word": "Short",
+    "ipa": "baˈxo/a",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "Bueno/a",
+    "word": "Good",
+    "ipa": "bweˈno/a",
+    "illustration": "👍"
+  },
+  {
+    "translation": "Malo/a",
+    "word": "Bad",
+    "ipa": "maˈlo/a",
+    "illustration": "👎"
+  },
+  {
+    "translation": "Viejo/a",
+    "word": "Old",
+    "ipa": "bjeˈxo/a",
+    "illustration": "👴"
+  },
+  {
+    "translation": "Joven",
+    "word": "Young",
+    "ipa": "xoˈβen",
+    "illustration": "👧"
+  },
+  {
+    "translation": "Bonito/a",
+    "word": "Pretty",
+    "ipa": "boˈnito/a",
+    "illustration": "💃"
+  },
+  {
+    "translation": "Feo/a",
+    "word": "Ugly",
+    "ipa": "feˈo/a",
+    "illustration": "😔"
+  },
+  {
+    "translation": "Rico/a",
+    "word": "Rich",
+    "ipa": "riˈko/a",
+    "illustration": "💸"
+  },
+  {
+    "translation": "Pobre",
+    "word": "Poor",
+    "ipa": "poˈβɾe",
+    "illustration": "😔"
+  },
+  {
+    "translation": "Caliente",
+    "word": "Hot",
+    "ipa": "kaˈljente",
+    "illustration": "☀️"
+  },
+  {
+    "translation": "Frío/a",
+    "word": "Cold",
+    "ipa": "fɾiˈo/a",
+    "illustration": "❄️"
+  },
+  {
+    "translation": "Limpio/a",
+    "word": "Clean",
+    "ipa": "limˈpjo/a",
+    "illustration": "💪"
+  },
+  {
+    "translation": "Sucio/a",
+    "word": "Dirty",
+    "ipa": "suˈθjo/a",
+    "illustration": "😷"
+  },
+  {
+    "translation": "Rápido/a",
+    "word": "Fast",
+    "ipa": "rapˈido/a",
+    "illustration": "⏱️"
+  },
+  {
+    "translation": "Lento/a",
+    "word": "Slow",
+    "ipa": "lenˈto/a",
+    "illustration": "⏱️"
+  },
+  {
+    "translation": "Feliz",
+    "word": "Happy",
+    "ipa": "feˈliθ",
+    "illustration": "😊"
+  },
+  {
+    "translation": "Triste",
+    "word": "Sad",
+    "ipa": "tɾiste",
+    "illustration": "😔"
+  },
+  {
+    "translation": "Enfermo/a",
+    "word": "Sick",
+    "ipa": "en.feɾˈmo/a",
+    "illustration": "🤒"
+  },
+  {
+    "translation": "Sano/a",
+    "word": "Healthy",
+    "ipa": "saˈno/a",
+    "illustration": "💪"
+  },
+  {
+    "translation": "¿Qué onda?",
+    "word": "What's up?",
+    "ipa": "ke ˈonda",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "Chévere",
+    "word": "Cool",
+    "ipa": "tʃeˈβeɾe",
+    "illustration": "😎"
+  },
+  {
+    "translation": "Genial",
+    "word": "Awesome",
+    "ipa": "xenˈjal",
+    "illustration": "😎"
+  },
+  {
+    "translation": "¡No me digas!",
+    "word": "No way!",
+    "ipa": "no me ˈdiɣas",
+    "illustration": "😲"
+  },
+  {
+    "translation": "¡A huevo!",
+    "word": "Right on!",
+    "ipa": "a ˈweβo",
+    "illustration": "👍"
+  },
+  {
+    "translation": "Cuate",
+    "word": "Buddy/Friend",
+    "ipa": "kwate",
+    "illustration": "🤝"
+  },
+  {
+    "translation": "Tío",
+    "word": "Dude",
+    "ipa": "tiˈo",
+    "illustration": "👨"
+  },
+  {
+    "translation": "Salir",
+    "word": "Hang out",
+    "ipa": "saˈliɾ",
+    "illustration": "🎉"
+  },
+  {
+    "translation": "Fiesta",
+    "word": "Party",
+    "ipa": "fjeˈsta",
+    "illustration": "🎉"
+  },
+  {
+    "translation": "Relajarse",
+    "word": "Chill",
+    "ipa": "re.laˈxase",
+    "illustration": "😴"
+  },
+  {
+    "translation": "¡Eso es una locura!",
+    "word": "That's crazy!",
+    "ipa": "eso es una loˈkuɾa",
+    "illustration": "😲"
+  },
+  {
+    "translation": "Estoy pelado",
+    "word": "I'm broke",
+    "ipa": "estoj peˈlado",
+    "illustration": "😔"
+  },
+  [
+  {
+    "translation": "¿Puedes repetir eso?",
+    "word": "Can you repeat that?",
+    "ipa": "pweðes repetiɾ eˈso",
+    "illustration": "🗣️"
+  },
+  {
+    "translation": "Estoy de acuerdo",
+    "word": "I agree",
+    "ipa": "estoj de akweɾdo",
+    "illustration": "✔️"
+  },
+  {
+    "translation": "No estoy de acuerdo",
+    "word": "I disagree",
+    "ipa": "no estoj de akweɾdo",
+    "illustration": "❌"
+  },
+  {
+    "translation": "Estoy perdido",
+    "word": "I'm lost",
+    "ipa": "estoj peɾˈdiðo",
+    "illustration": "🗺️"
+  },
+  {
+    "translation": "¡Me encanta esto!",
+    "word": "I love this!",
+    "ipa": "me eŋˈkanta eˈsto",
+    "illustration": "❤️"
+  },
+  {
+    "translation": "Me muero de hambre",
+    "word": "I'm starving",
+    "ipa": "me ˈmweɾo de ˈambɾe",
+    "illustration": "🍔"
+  },
+  {
+    "translation": "¡Qué chulo!",
+    "word": "How cool!",
+    "ipa": "ke ˈtʃulo",
+    "illustration": "😎"
+  },
+  {
+    "translation": "Está helando",
+    "word": "It's freezing",
+    "ipa": "está eˈlando",
+    "illustration": "❄️"
+  },
+  {
+    "translation": "Así es",
+    "word": "That's right",
+    "ipa": "aˈsi es",
+    "illustration": "✔️"
+  },
+  {
+    "translation": "Tengo prisa",
+    "word": "I'm in a hurry",
+    "ipa": "tengo ˈpɾisa",
+    "illustration": "⏱️"
+  },
+  {
+    "translation": "¡Qué pena!",
+    "word": "What a shame!",
+    "ipa": "ke ˈpena",
+    "illustration": "😔"
+  },
+  {
+    "translation": "¿Qué quieres decir?",
+    "word": "What do you mean?",
+    "ipa": "ke kjeɾes deˈsiɾ",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "Eso es raro",
+    "word": "That's weird",
+    "ipa": "eso es ˈraɾo",
+    "illustration": "😕"
+  },
+  {
+    "translation": "Estoy impresionado",
+    "word": "I'm impressed",
+    "ipa": "estoj impresjoˈnaðo",
+    "illustration": "😮"
+  },
+  {
+    "translation": "Todo bien",
+    "word": "It’s all good",
+    "ipa": "toðo ˈbjen",
+    "illustration": "😊"
+  },
+  {
+    "translation": "Estoy lleno",
+    "word": "I'm stuffed",
+    "ipa": "estoj ˈʎeno",
+    "illustration": "🍴"
+  },
+  {
+    "translation": "¡Qué vergüenza!",
+    "word": "How embarrassing!",
+    "ipa": "ke beɾˈɣweɲsa",
+    "illustration": "😳"
+  },
+  {
+    "translation": "No te preocupes",
+    "word": "Don’t worry",
+    "ipa": "no te pɾeokupes",
+    "illustration": "😊"
+  },
+  {
+    "translation": "Eso es gracioso",
+    "word": "That’s funny",
+    "ipa": "eso es ɡɾaˈsjozo",
+    "illustration": "😂"
+  },
+  {
+    "translation": "Todavía no",
+    "word": "Not yet",
+    "ipa": "toðaˈβja no",
+    "illustration": "⏱️"
+  },
+  {
+    "translation": "Nos vemos mañana",
+    "word": "See you tomorrow",
+    "ipa": "nos ˈbemos maˈñana",
+    "illustration": "📆"
+  },
+  {
+    "translation": "Hasta luego",
+    "word": "See you later",
+    "ipa": "asta ˈlweɣo",
+    "illustration": "👋"
+  },
+  {
+    "translation": "¡Qué alivio!",
+    "word": "What a relief!",
+    "ipa": "ke aˈliβjo",
+    "illustration": "😌"
+  },
+  {
+    "translation": "Estoy impactado",
+    "word": "I'm shocked",
+    "ipa": "estoj impakˈtaðo",
+    "illustration": "😲"
+  },
+  {
+    "translation": "Absolutamente",
+    "word": "Absolutely",
+    "ipa": "absoluˈtamente",
+    "illustration": "✔️"
+  },
+  {
+    "translation": "Estoy confundido",
+    "word": "I'm confused",
+    "ipa": "estoj konfundiˈðo",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "Estoy seguro",
+    "word": "I'm sure",
+    "ipa": "estoj seˈɣuɾo",
+    "illustration": "✔️"
+  },
+  {
+    "translation": "Cuenta conmigo",
+    "word": "Count me in",
+    "ipa": "kuenta konˈmigo",
+    "illustration": "🤝"
+  },
+  {
+    "translation": "Yo paso",
+    "word": "I'm out",
+    "ipa": "jo ˈpaso",
+    "illustration": "🚪"
+  },
+  {
+    "translation": "Eso es terrible",
+    "word": "That's terrible",
+    "ipa": "eso es teɾiˈble",
+    "illustration": "😨"
+  },
+  {
+    "translation": "¿Vienes?",
+    "word": "Are you coming?",
+    "ipa": "bjenes",
+    "illustration": "👋"
+  },
+  {
+    "translation": "Estoy aquí",
+    "word": "I'm here",
+    "ipa": "estoj aˈki",
+    "illustration": "📍"
+  },
+  {
+    "translation": "Estoy listo",
+    "word": "I'm ready",
+    "ipa": "estoj ˈlisto",
+    "illustration": "💪"
+  },
+  {
+    "translation": "No me interesa",
+    "word": "Not interested",
+    "ipa": "no me inteɾeˈsa",
+    "illustration": "🙅‍♂️"
+  },
+  {
+    "translation": "Olvidalo",
+    "word": "Forget it",
+    "ipa": "olbiˈðalo",
+    "illustration": "🙅‍♂️"
+  },
+  {
+    "translation": "No olvides",
+    "word": "Don’t forget",
+    "ipa": "no olˈbiðes",
+    "illustration": "📝"
+  },
+  {
+    "translation": "Espera un momento",
+    "word": "Wait a moment",
+    "ipa": "espeɾa un moˈmento",
+    "illustration": "⏱️"
+  },
+  {
+    "translation": "Un segundo",
+    "word": "Just a second",
+    "ipa": "un seˈgundo",
+    "illustration": "⏱️"
+  },
+  {
+    "translation": "Dame un respiro",
+    "word": "Give me a break",
+    "ipa": "dame un reˈspiro",
+    "illustration": "😩"
+  },
+  {
+    "translation": "Échame una mano",
+    "word": "Help me out",
+    "ipa": "etʃame una ˈmano",
+    "illustration": "🤝"
+  },
+  {
+    "translation": "¿Qué te pasa?",
+    "word": "What’s the matter?",
+    "ipa": "ke te ˈpasa",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "Trato hecho",
+    "word": "It’s a deal",
+    "ipa": "tɾato eˈtʃo",
+    "illustration": "🤝"
+  },
+  {
+    "translation": "Tómalo con calma",
+    "word": "Take it easy",
+    "ipa": "tomalo kon ˈkalma",
+    "illustration": "😌"
+  },
+  {
+    "translation": "Lo digo en serio",
+    "word": "I mean it",
+    "ipa": "lo ˈdiɣo en seˈɾjo",
+    "illustration": "💯"
+  },
+  {
+    "translation": "Créeme",
+    "word": "Believe me",
+    "ipa": "kreˈeme",
+    "illustration": "💯"
+  },
+  {
+    "translation": "Lo prometo",
+    "word": "I promise",
+    "ipa": "lo pɾoˈmeto",
+    "illustration": "💯"
+  },
+  {
+    "translation": "Eso tiene sentido",
+    "word": "That makes sense",
+    "ipa": "eso tjene senˈtido",
+    "illustration": "💡"
+  },
+  {
+    "translation": "No tengo idea",
+    "word": "I have no idea",
+    "ipa": "no tengo iˈdea",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "Vale la pena",
+    "word": "It's worth it",
+    "ipa": "bale la ˈpena",
+    "illustration": "💯"
+  },
+  {
+    "translation": "Así es la vida",
+    "word": "That's life",
+    "ipa": "aˈsi es la ˈbiða",
+    "illustration": "😊"
+  },
+  {
+    "translation": "Depende de ti",
+    "word": "It's up to you",
+    "ipa": "deˈpende de ti",
+    "illustration": "🤝"
+  },
+  {
+    "translation": "Siéntete como en casa",
+    "word": "Make yourself at home",
+    "ipa": "sjenteˈte komo en ˈkasa",
+    "illustration": "🏠"
+  },
+  {
+    "translation": "Estoy harto",
+    "word": "I'm fed up",
+    "ipa": "estoj ˈaɾto",
+    "illustration": "😩"
+  },
+  {
+    "translation": "¡Sigue así!",
+    "word": "Keep it up!",
+    "ipa": "siɣe aˈsi",
+    "illustration": "💪"
+  },
+  {
+    "translation": "¿Cómo va todo?",
+    "word": "How's it going?",
+    "ipa": "komo ba toˈðo",
+    "illustration": "🤔"
+  },
+  {
+    "translation": "No mucho",
+    "word": "Not much",
+    "ipa": "no ˈmuko",
+    "illustration": "🙅‍♂️"
+  },
+  {
+    "translation": "Como siempre",
+    "word": "Same as always",
+    "ipa": "komo sjemˈpɾe",
+    "illustration": "😐"
+  },
+  {
+    "translation": "Lo antes posible",
+    "word": "As soon as possible",
+    "ipa": "lo anˈtes poˈsible",
+    "illustration": "⏱️"
+  },
+  {
+    "translation": "Por fin",
+    "word": "At last",
+    "ipa": "poɾ ˈfin",
+    "illustration": "😌"
+  },
+  {
+    "translation": "Eso es extraño",
+    "word": "That’s odd",
+    "ipa": "eso es ekˈstɾaɲo",
+    "illustration": "😕"
+  },
+  {
+    "translation": "Estoy aquí para ti",
+    "word": "I’m here for you",
+    "ipa": "estoj aˈki paɾa ti",
+    "illustration": "🤝"
+  },
+  {
+    "translation": "Lo entiendo",
+    "word": "I get it",
+    "ipa": "lo entjendo",
+    "illustration": "💡"
+  },
+  {
+    "translation": "Ocúpate de tus asuntos",
+    "word": "Mind your own business",
+    "ipa": "oˈkupate de tus asunˈtos",
+    "illustration": "🙅‍♂️"
+  },
+  {
+    "translation": "No te metas",
+    "word": "Stay out of it",
+    "ipa": "no te ˈmetas",
+    "illustration": "🙅‍♂️"
+  },
+  {
+    "translation": "Buen trabajo",
+    "word": "Good job",
+    "ipa": "bwen tɾaˈbaxo",
+    "illustration": "💼"
   }
 ]
+
