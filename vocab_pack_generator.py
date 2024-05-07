@@ -262,21 +262,31 @@ async def generate_vocab_pack(language_pair: str, name: str, description: str, l
 
 
 default_packs = [
+    # {
+    #     "name": "beginner",
+    #     "description": "Ideal for starters, this pack includes essential words and phrases to build foundational vocabulary and engage in basic conversations.",
+    #     "length": 350
+    # },
+    # {
+    #     "name": "intermediate",
+    #     "description": "Designed for learners with foundational knowledge, this pack expands vocabulary and conversational phrases for improved communication in everyday scenarios.",
+    #     "length": 600
+    # },
+    # {
+    #     "name": "advanced",
+    #     "description": "For those nearing fluency, this pack offers an extensive collection of terms and expressions for sophisticated dialogue and comprehensive topic coverage.",
+    #     "length": 1000
+    # },
     {
-        "name": "beginner",
-        "description": "Ideal for starters, this pack includes essential words and phrases to build foundational vocabulary and engage in basic conversations.",
-        "length": 350
+        "name": "jokes",
+        "description": "Humour and jokes. Both shared humour and cultural-specific jokes. Humour for all types of styles and tastes within this culture!",
+        "length": 500
     },
     {
-        "name": "intermediate",
-        "description": "Designed for learners with foundational knowledge, this pack expands vocabulary and conversational phrases for improved communication in everyday scenarios.",
-        "length": 600
-    },
-    {
-        "name": "advanced",
-        "description": "For those nearing fluency, this pack offers an extensive collection of terms and expressions for sophisticated dialogue and comprehensive topic coverage.",
-        "length": 1000
-    },
+        "name": "romance",
+        "description": "Dating, relationship, and romance. Common pickup-lines, and cultural sayings within this culture!",
+        "length": 500
+    }
 ]
 
 all_language_pairs = [

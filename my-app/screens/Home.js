@@ -25,6 +25,8 @@ const Home = ({ navigation }) => {
     'spanish_english-beginner',
     'spanish_english-intermediate', 
     'spanish_english-advanced', 
+    'spanish_english-jokes', 
+    'spanish_english-romance', 
 
   ]; // Adjusted keys to match the storage keys
   
