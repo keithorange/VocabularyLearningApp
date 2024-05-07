@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 export const sharedStyles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     padding: 20,
     width: '100%', // Make sure the container takes full width
@@ -34,7 +34,7 @@ export const sharedStyles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
-    fontSize: 24,
+    fontSize: 28,
     textTransform: 'none', // Ensure text is not automatically transformed
   },
 

@@ -1,62 +1,128 @@
-import React from 'react';
-import { Image, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { MMKV } from 'react-native-mmkv';
 
-const App = ({ navigation }) => {
-  const languageEmojis = [
-    { title: 'English', icon: '🇺🇸' },
-    { title: 'Spanish', icon: '🇪🇸' },
-    { title: 'French', icon: '🇫🇷' },
-    { title: 'German', icon: '🇩🇪' },
-    { title: 'Italian', icon: '🇮🇹' },
-    { title: 'Japanese', icon: '🇯🇵' },
-    { title: 'Chinese', icon: '🇨🇳' },
-  ];
+const storage = new MMKV();
+
+function capitalize(word) { 
+  const firstLetter = word.charAt(0)
+  const firstLetterCap = firstLetter.toUpperCase()
+  const remainingLetters = word.slice(1)
+  const capitalizedWord = firstLetterCap + remainingLetters
+  return capitalizedWord
+}
+
+const Home = ({ navigation }) => {
+  const [vocabPacks, setVocabPacks] = useState([]);
+  
+  const [mainLanguage, setMainLanguage] = useState('english')
+  const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [selectedVocabPack, setSelectedVocabPack] = useState(null);
+
+  const vocabPackKeys = [
+    'spanish_english-beginner',
+    'spanish_english-intermediate', 
+    'spanish_english-advanced', 
+
+  ]; // Adjusted keys to match the storage keys
+  
+  const languages = [
+    { language: "Spanish", flag: "🇪🇸" }
+  ]
+
+  useEffect(() => {
+    // Generate keys based on expected storage pattern
+    
+    
+    const packs = vocabPackKeys.map(key => JSON.parse(storage.getString(key)));
+
+    console.log('PACKSPACKS', packs)
+    setVocabPacks(packs);
+
+}, []);
+
+  
+
 
   return (
     <View style={styles.container}>
-      
-
       <SelectDropdown
-        data={languageEmojis}
+        data={languages}
         onSelect={(selectedItem, index) => {
-          console.log(selectedItem, index);
+          // console.log(selectedItem, index);
+          setSelectedLanguage(selectedItem.language)
         }}
         renderButton={(selectedItem, isOpened) => {
           return (
             <View style={styles.dropdownButtonStyle}>
-
-              {(selectedItem && (
-                  <Text style={styles.dropdownButtonIconStyle}> {selectedItem.icon} </Text>
-              ))}
-              <Text style={styles.dropdownButtonTxtStyle}>{(selectedItem && selectedItem.title) || 'Select language'}</Text>
-          
+              <Text style={styles.dropdownButtonIconStyle}>
+                {selectedItem ? selectedItem.flag : '🌐'}
+              </Text>
+              <Text style={styles.dropdownButtonTxtStyle}>
+                {(selectedItem && selectedItem.language) || 'Select Language'}
+              </Text>
               <Icon name={isOpened ? 'chevron-up' : 'chevron-down'} style={styles.dropdownButtonArrowStyle} />
             </View>
           );
         }}
         renderItem={(item, index, isSelected) => {
-          if (!item) return null;
           return (
-            <View style={{ ...styles.dropdownItemStyle, ...(isSelected && { backgroundColor: '#D2D9DF' }) }}>
-              <Text style={styles.dropdownButtonIconStyle}> {item.icon} </Text>
-              <Text style={styles.dropdownButtonTxtStyle}> {item.title} </Text>
+            <View style={{...styles.dropdownButtonStyle, ...(isSelected && {backgroundColor: '#D2D9DF'})}}>
+              <Text style={styles.dropdownButtonIconStyle}>{item.flag}</Text>
+              <Text style={styles.dropdownButtonTxtStyle}>{item.language}</Text>
             </View>
-
           );
         }}
         showsVerticalScrollIndicator={false}
         dropdownStyle={styles.dropdownMenuStyle}
       />
 
+      {selectedLanguage && (
+        <SelectDropdown
+          data={vocabPacks.filter(x => x.languagePair.toLowerCase().startsWith(selectedLanguage.toLowerCase()))}
+          onSelect={(selectedItem, index) => {
+            // console.log(selectedItem, index);
+            setSelectedVocabPack(selectedItem)
+          }}
+          renderButton={(selectedItem, isOpened) => {
+            return (
+              <View style={styles.dropdownButtonStyle}>
+                <Text style={styles.dropdownButtonIconStyle}>
+                  {selectedItem ? selectedItem.icon : '📚'}
+                </Text>
+                <Text style={styles.dropdownButtonTxtStyle}>
+                  {(selectedItem && capitalize(selectedItem.name)) || 'Select Vocabulary'}
+                </Text>
+                <Icon name={isOpened ? 'chevron-up' : 'chevron-down'} style={styles.dropdownButtonArrowStyle} />
+              </View>
+            );
+          }}
+          renderItem={(item, index, isSelected) => {
+            return (
+              <View style={{ ...styles.dropdownButtonStyle, ...(isSelected && { backgroundColor: '#D2D9DF' }) }}>
+                <Text style={styles.dropdownButtonIconStyle}>{item.icon}</Text>
+                <Text style={styles.dropdownButtonTxtStyle}>{capitalize(item.name)}</Text>
+              </View>
+            );
+          }}
+          showsVerticalScrollIndicator={false}
+          dropdownStyle={styles.dropdownMenuStyle}
+        />
+      
+      )}
+
       <TouchableOpacity
         style={styles.playButton}
-        onPress={() => navigation.navigate('Quiz')}
+        onPress={() => navigation.navigate('Quiz', {
+          vocabPack: selectedVocabPack,
+        })}
       >
-        <Icon name="play" size={28} color="green" />
         <Text style={styles.playButtonText}>Play Quiz</Text>
+        <Icon name="play" size={28} color="green" />
       </TouchableOpacity>
+
     </View>
   );
 };
@@ -65,12 +131,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-evenly'
-  },
-  image: {
-    width: 80,
-    height: 80,
-    resizeMode: 'contain',
+    justifyContent: 'space-evenly',
+    backgroundColor: '#ffa801'
   },
   dropdownButtonStyle: {
     width: 200,
@@ -99,52 +161,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#E9ECEF',
     borderRadius: 8,
   },
-  dropdownItemStyle: {
-    width: '100%',
-    flexDirection: 'row',
-    paddingHorizontal: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 8,
-  },
-  dropdownItemTxtStyle: {
-    flex: 1,
-    fontSize: 18,
-    fontWeight: '500',
-    color: '#151E26',
-  },
-  dropdownItemIconStyle: {
-    fontSize: 28,
-    marginRight: 8,
-  },
   playButton: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#4CAF50', // Green
+    backgroundColor: '#4CAF50',
     padding: 10,
     borderRadius: 10,
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-
     height: '13%',
     width: '66%'
   },
+  playButtonText: {
+    fontSize: 24,
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+});
 
-playButtonText: {
-  fontSize: 24,
-  color: '#fff', // White
-  fontWeight: 'bold',
-},
-
-})
-
-
-
-export default App;
+export default Home;

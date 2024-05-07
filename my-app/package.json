@@ -4,8 +4,8 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web"
   },
   "dependencies": {
@@ -25,10 +25,12 @@
     "react-native-confetti-cannon": "^1.5.2",
     "react-native-gifted-charts": "^1.4.10",
     "react-native-linear-gradient": "^2.8.3",
+    "react-native-mmkv": "^2.12.2",
     "react-native-reanimated-table": "^0.0.2",
     "react-native-select-dropdown": "^4.0.1",
     "react-native-sound": "^0.11.2",
     "react-native-table-component": "^1.2.2",
+    "react-native-uuid": "^2.0.2",
     "react-native-vector-icons": "^10.1.0",
     "react-native-web": "~0.19.6"
   },

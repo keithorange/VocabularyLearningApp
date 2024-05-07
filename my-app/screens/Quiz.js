@@ -7,63 +7,25 @@ import * as Speech from 'expo-speech';
 import { PieChart } from 'react-native-gifted-charts';
 import ConfettiCannon from 'react-native-confetti-cannon';
 
+import NotificationBanner from '../components/NotificationBanner'
 const {height, width} = Dimensions.get('window')
 
+import { recommendCard, updateCard, getCard, getVocabPack, getCards } from '../utils/storage';
 
-const NotificationBanner = ({ innerContent, isVisible, setIsVisible }) => {
-    const opacity = useRef(new Animated.Value(0)).current;
-    const fadeAnim = useRef(null);
-
-    useEffect(() => {
-      if (innerContent) {
-        console.log(
-          'innerContent', innerContent,
-          )
-            setIsVisible(true);
-            fadeIn();
-        }
-    }, [innerContent]);
-
-    const fadeIn = () => {
-        fadeAnim.current = Animated.timing(opacity, {
-            toValue: 1,
-            duration: 1,
-            useNativeDriver: true,
-        });
-        fadeAnim.current.start();
-    };
-
-    const fadeOut = () => {
-        fadeAnim.current = Animated.timing(opacity, {
-            toValue: 0,
-            duration: 500,
-            useNativeDriver: true,
-        });
-        fadeAnim.current.start(() => setIsVisible(false));
-    };
-
-    const handleOutsideClick = () => {
-        fadeOut();
-    };
-
-    if (!isVisible) return null;
-
-    return (
-      <TouchableWithoutFeedback onPress={handleOutsideClick}>
-            <Animated.View style={[styles.notificationContainer, { opacity }]}>
-              {innerContent}
-            </Animated.View>
-        </TouchableWithoutFeedback>
-    );
-};
 
 const getRandomColor = () => {
-  const colors = ['#ef5777', '#f53b57', '#ffc048', '#ffa801', '#575fcf', '#3c40c6', '#ffdd59', '#ffd32a', '#4bcffa', '#0fbcf9', '#ff5e57', '#ff3f34', '#34e7e4', '#00d8d6', '#d2dae2', '#808e9b', '#0be881', '#05c46b', '#485460', '#1e272e'];
+  const colors = ['#ef5777', '#f53b57', '#ffc048', '#ffa801', '#575fcf', '#3c40c6', '#ffdd59', '#ffd32a', '#4bcffa', '#0fbcf9', '#ff5e57', '#ff3f34', '#34e7e4', '#00d8d6',   '#0be881', '#05c46b'];
   
   return colors[Math.floor(Math.random() * colors.length)];
 };
-export default function Quiz() {
+
+export default function Quiz({ route }) {
+  const { vocabPack } = route.params || {}; // Provide an empty object as fallback
+
+  const [cards, setCards] = useState([]);
   const [card, setCard] = useState(null);  // Current card to quiz
+
+
   const [options, setOptions] = useState([]);  // Quiz options displayed to the user
   const [correctAnswer, setCorrectAnswer] = useState('');  // Store the correct answer for validation
   const [quizType, setQuizType] = useState('');  // 'word' or 'translation', to show what we're asking for
@@ -73,7 +35,7 @@ export default function Quiz() {
   const [winningStreak, setWinningStreak] = useState(0);
   const [losingStreak, setLosingStreak]= useState(0);
 
-  const [backgroundColor, setBackgroundColor] = useState(null);
+  const [backgroundColor, setBackgroundColor] = useState('#0be881'); // Default background color
   const [sound, setSound] = useState();
 
   const [showBanner, setShowBanner] = useState(false);
@@ -108,22 +70,18 @@ export default function Quiz() {
   }, [showConfetti])
 
   
+
   useEffect(() => {
-    // New unique random color
-    if (card) {
-      let newColor = getRandomColor();
-      while (newColor == backgroundColor) {
-        newColor = getRandomColor();
-      }
-      setBackgroundColor(newColor);
+    console.log("Received language pack in Quiz:", vocabPack);
+    if (vocabPack) {
+      setCards(vocabPack.cards)
+      // use vocabPack.cards since cards not set yet asyncly
+
+      fetchRecommendedCard();
     }
-  }, [card]); // Update the color when the card changes
+  }, [vocabPack]);
 
-  useEffect(() => {
-    fetchRecommendedCard();
-  }, []);
-
-
+  
   useEffect(() => {
     Audio.setAudioModeAsync({
       playsInSilentModeIOS: true,
@@ -162,7 +120,13 @@ export default function Quiz() {
   };
 
 
-
+  const setNewRandomBackgroundcolor = () => { 
+    let newColor = getRandomColor();
+      while (newColor == backgroundColor) {
+        newColor = getRandomColor();
+      }
+      setBackgroundColor(newColor);
+  }
 
   const questionText = (quizType === 'word') ? correctAnswer.word : correctAnswer.translation
 
@@ -181,48 +145,30 @@ export default function Quiz() {
 
       } else {
         // only play question tts
-          ttsQuestionText()
+      //setNewRandomBackgroundcolor()
+        ttsQuestionText()
        }
       console.log('correctAnswer', correctAnswer)
     }
   }, [showBanner]); 
+  
   // startup case
   useEffect(() => {
     if (card && (wins + losses == 0)) {
+      //setNewRandomBackgroundcolor()
       ttsQuestionText()
     }
   }, [card])
 
   
+  // Modify fetchRecommendedCard to use passed cards
   const fetchRecommendedCard = () => {
-    fetch('http://127.0.0.1:5000/cards')  // Changed to fetch multiple cards
-      .then(response => response.json())
-      .then(data => {
-        const allCards = data.cards;
-        function selectItemByWinrate(items) {
-          // Calculate the sum of all winrates
-          const totalWinrate = items.reduce((sum, item) => sum + (1 - item.winrate), 0);
+    const loadedCards = getCards(vocabPack.languagePair, vocabPack.name)
+    const recommendedCard = recommendCard(loadedCards); // Modify recommendCard to accept cards
+    setCard(recommendedCard);
 
-          // Generate a random number between 0 and the total winrate
-          const randomValue = Math.random() * totalWinrate;
-
-          let cumulativeWinrate = 0;
-          for (const item of items) {
-            cumulativeWinrate += 1 - item.winrate;
-            if (randomValue <= cumulativeWinrate) {
-              return item;
-            }
-          }
-
-          // If no item is selected (which should not happen), return the last item
-          return items[items.length - 1];
-        }
-
-        const selectedCard = selectItemByWinrate(allCards);
-        setCard(selectedCard);
-        prepareQuizOptions(selectedCard, allCards);
-      })
-      .catch(error => console.error('Error fetching recommended card:', error));
+    console.log('preparing quiz options', 'recommendedCard', recommendedCard, 'loadedCards', loadedCards)
+    prepareQuizOptions(recommendedCard, loadedCards); // Ensure it uses the loaded cards
   };
 
   const prepareQuizOptions = (selectedCard, allCards) => {
@@ -271,16 +217,13 @@ export default function Quiz() {
 };
 
   
+  
 
   
   const handleAnswer = async (option) => {
     const textAnswer = option;
-    console.log('checking if correctAnswer[quizType] === textAnswer', 'correctAnswer[quizType]', correctAnswer[quizType], 'textAnswer', textAnswer)
-
     const isCorrect = correctAnswer[quizType === 'word' ? 'translation' : 'word'] === textAnswer
-    console.log('handleAnswer', 'textAnswer', textAnswer, 'correctAnswer', correctAnswer)
 
-    
     const message = (
       <View style={{
         backgroundColor: isCorrect ? 'rgba(0,167,0,0.9)' : 'rgba(188,32,38,0.9)', height: '100%', width: '100%',
@@ -306,8 +249,6 @@ export default function Quiz() {
       </View>
     )
 
-
-
     console.log("Message to display:", message); // Debug log
   
     setBannerMessage(message);
@@ -319,7 +260,7 @@ export default function Quiz() {
 
     // WIN !!
     if (isCorrect) {
-        setWins(wins + 1);
+      setWins(wins + 1);
       setWinningStreak(winningStreak + 1)
       setLosingStreak(0)
       triggerConfetti()
@@ -335,24 +276,38 @@ export default function Quiz() {
         await playFailureSound();
     }
     updateCardResult(card.id, isCorrect);
+    setNewRandomBackgroundcolor()
     fetchRecommendedCard(); // Get the next card after answering
 };
 
-  const updateCardResult = (cardId, isCorrect) => {
-    const winOrLoss = isCorrect ? 'win': 'loss'
-    fetch(`http://127.0.0.1:5000/card/update/${cardId}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ result: winOrLoss })
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('updateCardResult success', `Your answer was a ${winOrLoss}.`);
-    })
-    .catch(error => console.error('Error updating card result:', error));
-  };
+  const updateCardResult = async (cardId, isCorrect) => {
+    const oldCard = getCard(vocabPack.languagePair, vocabPack.name, cardId);
+    if (!oldCard) {
+      console.error('Card not found');
+      return;
+    }
+
+    const newWins = isCorrect ? oldCard.wins + 1 : oldCard.wins;
+    const newLosses = isCorrect ? oldCard.losses : oldCard.losses + 1;
+
+    // Use the existing updateCard function to update the card data
+    await updateCard(vocabPack.languagePair, vocabPack.name, cardId, {
+      wins: newWins,
+      losses: newLosses,
+      winrate: (newWins + newLosses > 0) ? (newWins / (newWins + newLosses) * 100).toFixed(2) : 0
+    });
+
+    // Fetch the updated vocab pack to reflect the changes in the UI
+    const updatedVocabPack = getVocabPack(vocabPack.languagePair, vocabPack.name);
+    if (updatedVocabPack) {
+      setCards(updatedVocabPack.cards); // Update the cards state to reflect the new card data
+    }
+
+    console.log("ENSURING CARD UPDATED: ", 'oldCard', oldCard, )
+  }
+
+
+
 
   return (
     <View style={[sharedStyles.container, { backgroundColor }]}>
@@ -360,11 +315,11 @@ export default function Quiz() {
       
 
       <View style={{ position: 'absolute', top: 10, left: 10, width: width*0.1}}>
-        {(winningStreak > 0) && (<Text style={styles.streakText}>{winningStreak}X</Text>)}
+        {(winningStreak > 0) && (<Text style={styles.streakText}>{winningStreak}</Text>)}
       </View>
-      <View style={{ position: 'absolute', top: 10, right: 10, width: width*0.1}}>
+      <View style={{ position: 'absolute', top: 10, right: width*0.02-10 }}>
         <PieChart
-          radius={100}
+          radius={width*0.04}
           data={[
             { value: wins, color: 'green' },
             { value: losses, color: 'red'}
@@ -425,7 +380,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   streakText: {
-    fontSize: 124,
+    fontSize: 100,
     fontWeight: 800,
     color: 'orange',
     paddingRight: 20
@@ -451,3 +406,4 @@ const styles = StyleSheet.create({
   },
   
 });
+
